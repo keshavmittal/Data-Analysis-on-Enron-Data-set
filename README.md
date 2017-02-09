@@ -1,5 +1,5 @@
 # Data-Analysis-on-Enron-Data-set
-Used Python for Cleaning the data set removing unwanted details from email and only using necessary details from the email data set for further analysis which included Data Discovery to get information regarding emails sent and received by users.
+Used Python for Cleaning the data set removing unwanted details from email and only using necessary details from the email data set for further analysis.
 
 
 
@@ -9,5 +9,10 @@ Data Pre- Processing
 3. Applied all functions on email dataset and saved processed data in a file.
 4. functions created to get name , email address and length of the email body.
 
-Data Discovery
-Include code to get information which user sent email to which user.
+Understanding Pre-Processing
+First the headers are extracted from the raw email.
+Then the email body is extracted from the email.
+Stemming and Stopping word operations are applied on the email body.
+Code for Stemming include both Porter Stemming and Snowball Stemming.
+
+
