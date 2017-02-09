@@ -1,0 +1,14 @@
+from email.parser import Parser
+
+
+
+f=open("Path")
+emailText = f.read()
+
+
+def get_Headers(emailText)
+parser = Parser()
+email = parser.parsestr(emailText)
+print email.get('From')
+print email.get('To')
+print email.get('Subject')

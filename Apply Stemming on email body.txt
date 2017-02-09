@@ -1,0 +1,28 @@
+from nltk.stem import PorterStemmer
+ps = PorterStemmer()
+f=open("Path")
+cleaned_text=f.read()
+final=map(lambda x: ps.stem(x), cleaned_text)
+print (final)
+print(' '.join(final)) 
+
+
+
+from nltk.stem.snowball import SnowballStemmer
+stemmer = SnowballStemmer("english")
+f=open("Path")
+cleaned_text=f.read()
+print(stemmer.stem(cleaned_text))
+print (cleaned_text)
+print(' '.join(final)) 
+
+
+
+
+from nltk.stem import PorterStemmer
+def apply_Stemming(stem):
+    words = final_filter.split()
+    stems = [ stemmer.stem(word) for word in words]
+    final_text = (' '.join(stems))
+    print(final_text)
+apply_Stemming(emailText)

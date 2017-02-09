@@ -1,0 +1,53 @@
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+import string
+stop_words = set(stopwords.words("english"))
+file = open("Path")
+example_sent = file.read()
+example_words = word_tokenize(example_sent)
+example_words1 = filter(lambda x: x not in string.punctuation, example_words)
+cleaned_text = filter(lambda x: x not in stop_words, example_words1)
+print(cleaned_text)
+
+
+
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.tokenize import wordpunct_tokenize
+from nltk.corpus import stopwords
+import string
+stop = set(stopwords.words("english"))
+file = open("Path")
+text=file.read()
+text = ' '.join([word for word in text.split() if text not in (stopwords.words('english'))])
+print (text)
+
+
+import nltk
+from nltk.corpus import stopwords
+
+word_list = open("Path", "r")
+stops = set(stopwords.words('english'))
+
+for line in word_list:
+    for w in line.split():
+        if w.lower() not in stops:
+            print w
+
+
+
+import string
+import nltk
+from nltk.tokenize import RegexpTokenizer
+from nltk.corpus import stopwords
+import re
+
+
+f=open("Path")
+sentence=f.read()
+sentence = sentence.lower()
+tokenizer = RegexpTokenizer(r'\w+') 
+tokens = tokenizer.tokenize(sentence)
+filtered_words = [w for w in tokens if not w in stopwords.words('english')] 
+print (" ".join(filtered_words))

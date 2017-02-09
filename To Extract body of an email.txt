@@ -1,0 +1,10 @@
+import email
+f=open("C:\Users\Keshav\Desktop\Fall 2016\Machine learning with big data\Assignment 3\kes.txt")
+a=f.read()
+b = email.message_from_string(a)
+if b.is_multipart():
+    for payload in b.get_payload():
+        # if payload.is_multipart(): ...
+        print payload.get_payload()
+else:
+    print b.get_payload()

@@ -1,0 +1,61 @@
+import glob
+import email
+from email.parser import Parser
+from nltk.stem import PorterStemmer
+import string
+import nltk
+from nltk.tokenize import RegexpTokenizer
+from nltk.corpus import stopwords
+import re
+
+
+read_files=glob.glob("enron_mail_20150507\\maildir\\*\\all_documents\\*_")
+
+        
+
+def get_Header(emailText):
+    parser = Parser()
+    email = parser.parsestr(emailText) 
+    x= email.get('From')
+    d= email.get('To')
+    f= email.get('Subject')
+    head = '\nFrom: ' + str(x) + '\nTo: ' + str(d) + '\nSubject: ' + str(f) + '\n'
+    return head
+    
+
+def get_Emailbody(body):
+    b=' '
+    b = email.message_from_string(emailText)
+    global c
+    c = b.get_payload()
+    
+def Rem_Stopwords(stop):
+    sentence = c.lower()
+    tokenizer = RegexpTokenizer(r'\w+') 
+    tokens = tokenizer.tokenize(sentence)
+    filtered_words = [w for w in tokens if not w in stopwords.words('english')] 
+    global final_filter
+    final_filter =  (" ".join(filtered_words))
+
+def apply_Stemming(stem):
+    stemmer = PorterStemmer()
+    words = final_filter.split()
+    stems = [ stemmer.stem(word) for word in words]
+    final_text = (' '.join(stems))
+    finaly_text = ('\n' + final_text)
+    return finaly_text
+    
+with open("Path", "w") as outfile:
+    for k in read_files:
+        with open(k, "rb") as infile:
+            emailText = infile.read()
+            get_Emailbody(emailText)
+            Rem_Stopwords(emailText)
+            apply_Stemming(emailText)
+            stemm = apply_Stemming(emailText)
+            headerr = get_Header(emailText) 
+            final = str(headerr) + str(stemm) + '\n'
+            outfile.write(final)
+         
+    
+  
